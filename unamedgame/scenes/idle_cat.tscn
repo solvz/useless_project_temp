@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://51b5ggcgqjgp"]
 
 [ext_resource type="Texture2D" uid="uid://cr5odqabwrtsx" path="res://assets/sprites/Player/AnimalPack/AnimalPack/Cats/BlackCat/PNG/IdleCatb.png" id="1_3x210"]
-[ext_resource type="Script" uid="uid://dku7vln0e813n" path="res://scenes/idlecatmovement.gd" id="1_xpooi"]
+[ext_resource type="Script" uid="uid://dku7vln0e813n" path="res://scripts/idlecatmovement.gd" id="1_xpooi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpooi"]
 atlas = ExtResource("1_3x210")
