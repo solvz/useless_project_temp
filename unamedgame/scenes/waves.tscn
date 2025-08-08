@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://bn7xilju6o6sw"]
+
+[ext_resource type="Texture2D" uid="uid://crdkjsxk0l5ty" path="res://assets/sprites/Tile/Overworld.png" id="1_gamc8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygl0c"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntrpo"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56rt2"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmytd"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgkec"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr7t3"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cvyw"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5f03l"]
+atlas = ExtResource("1_gamc8")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pmkws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygl0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntrpo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56rt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmytd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgkec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr7t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cvyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5f03l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Waves" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_pmkws")
+frame_progress = 0.261277

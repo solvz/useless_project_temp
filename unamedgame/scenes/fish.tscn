@@ -32,7 +32,7 @@ shape = SubResource("CircleShape2D_pgks6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nub35")
 
-[node name="LifeTimer" type="Timer" parent="."]
+[node name="RespawnTimer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
