@@ -63,7 +63,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_xg1sx"]
 radius = 8.06226
 
-[node name="IdleCat" type="CharacterBody2D"]
+[node name="IdleCat" type="CharacterBody2D" groups=["player"]]
+up_direction = Vector2(0, 1)
 script = ExtResource("1_xpooi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
