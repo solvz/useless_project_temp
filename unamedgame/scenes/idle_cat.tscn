@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://51b5ggcgqjgp"]
 
 [ext_resource type="Texture2D" uid="uid://cr5odqabwrtsx" path="res://assets/sprites/Player/AnimalPack/AnimalPack/Cats/BlackCat/PNG/IdleCatb.png" id="1_3x210"]
-[ext_resource type="Script" uid="uid://bgucbcmhtjfpo" path="res://scripts/idlecatmovement.gd" id="1_xpooi"]
+[ext_resource type="Script" uid="uid://dku7vln0e813n" path="res://scenes/idlecatmovement.gd" id="1_xpooi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpooi"]
 atlas = ExtResource("1_3x210")
@@ -69,7 +69,7 @@ script = ExtResource("1_xpooi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wmkeo")
 autoplay = "default"
-frame_progress = 0.941945
+frame_progress = 0.277778
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 5)
