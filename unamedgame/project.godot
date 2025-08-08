@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="unamedgame"
 
+[gui]
+
+theme/custom_font="uid://6r6g00o28r8n"
+
 [input]
 
 right={

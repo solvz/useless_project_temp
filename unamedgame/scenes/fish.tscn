@@ -21,7 +21,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Fish" type="Area2D"]
+[node name="Fish" type="Area2D" groups=["fish"]]
 collision_mask = 2
 script = ExtResource("1_8g0i4")
 
@@ -32,4 +32,7 @@ shape = SubResource("CircleShape2D_pgks6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nub35")
 
+[node name="LifeTimer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LifeTimer" to="." method="_on_life_timer_timeout"]
