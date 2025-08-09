@@ -1108,12 +1108,45 @@ horizontal_alignment = 1
 
 [node name="ExitButton" type="Button" parent="UILayer"]
 unique_name_in_owner = true
-anchors_preset = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 120.0
 offset_bottom = 50.0
 text = "Exit to Menu"
+
+[node name="SleepinessContainer" type="VBoxContainer" parent="UILayer"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -180.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 120.0
+
+[node name="SleepinessLabel" type="Label" parent="UILayer/SleepinessContainer"]
+layout_mode = 2
+text = "Sleepiness"
+horizontal_alignment = 1
+
+[node name="SleepinessBar" type="ProgressBar" parent="UILayer/SleepinessContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+step = 1.0
+show_percentage = false
+
+[node name="AwakeTimerLabel" type="Label" parent="UILayer/SleepinessContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Awake: 00:00"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="UILayer/SleepinessContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Best: 00:00"
+horizontal_alignment = 1
 
 [node name="Fish" type="Node" parent="."]
 
@@ -1295,8 +1328,6 @@ frame_progress = 0.0505445
 position = Vector2(376, -282)
 frame_progress = 0.232584
 
-[connection signal="pressed" from="UILayer/ExitButton" to="IdleCat" method="_on_exit_button_pressed"]
-
 [node name="Ripple12" parent="WaterAnimations" instance=ExtResource("5_p57ef")]
 position = Vector2(-85, -343)
 rotation = -0.571425
@@ -1305,3 +1336,5 @@ frame_progress = 0.884482
 [node name="Ripple13" parent="WaterAnimations" instance=ExtResource("5_p57ef")]
 position = Vector2(95, -361)
 frame_progress = 0.436874
+
+[connection signal="pressed" from="UILayer/ExitButton" to="IdleCat" method="_on_exit_button_pressed"]
