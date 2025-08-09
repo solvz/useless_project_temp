@@ -33,7 +33,7 @@ offset_bottom = 100.0
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_7s82n")
 theme_override_font_sizes/font_size = 36
-text = "Cat Adventure"
+text = "Paw and Fins"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]

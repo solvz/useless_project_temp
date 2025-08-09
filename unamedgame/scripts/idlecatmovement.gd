@@ -86,3 +86,6 @@ func set_fish(new_fish_count: int) -> void:
 func update_character_label():
 	if character_label:
 		character_label.text = "Character: " + CharacterManager.get_character_name(CharacterManager.selected_character)
+
+func _on_exit_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

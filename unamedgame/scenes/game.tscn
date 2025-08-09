@@ -1106,6 +1106,15 @@ theme_override_font_sizes/font_size = 12
 text = "Press C/X to switch"
 horizontal_alignment = 1
 
+[node name="ExitButton" type="Button" parent="UILayer"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 50.0
+text = "Exit to Menu"
+
 [node name="Fish" type="Node" parent="."]
 
 [node name="Fish" parent="Fish" instance=ExtResource("3_lnu2h")]
@@ -1285,6 +1294,8 @@ frame_progress = 0.0505445
 [node name="Ripple11" parent="WaterAnimations" instance=ExtResource("5_p57ef")]
 position = Vector2(376, -282)
 frame_progress = 0.232584
+
+[connection signal="pressed" from="UILayer/ExitButton" to="IdleCat" method="_on_exit_button_pressed"]
 
 [node name="Ripple12" parent="WaterAnimations" instance=ExtResource("5_p57ef")]
 position = Vector2(-85, -343)
