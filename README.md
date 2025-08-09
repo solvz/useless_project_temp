@@ -39,16 +39,17 @@ For Software:
 
 #### Installation
 ```bash
-# Clone the repository
-git clone https://github.com/solvz/Paws-Fins.git
-cd useless_project_temp/pawsandfins
+# Download the latest release
+# Go to: https://github.com/solvz/Paws-Fins/releases/tag/V1.0
+# Download the appropriate file for your system
 
-# Install Godot Engine 4.x
-# Download from: https://godotengine.org/download
-# Or via package manager:
-# Ubuntu/Debian: sudo apt install godot
-# macOS: brew install godot
-# Windows: Download and install from official site
+# For Windows users (Recommended):
+# Download PawsAndFins.exe and the .pck file from the release page
+# No additional installation required - just run the executable!
+
+# For developers who want to modify the project:
+# Download the source code and install Godot Engine 4.x
+# Download Godot from: https://godotengine.org/download
 ```
 
 #### Run
