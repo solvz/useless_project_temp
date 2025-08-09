@@ -10,6 +10,7 @@ var sleepiness_level = 0.0
 var awake_time = 0.0
 var high_score = 0.0
 var is_moving = false
+var is_sleeping = false
 
 @onready var fish_label = %Label
 @onready var animated_sprite = $AnimatedSprite2D
@@ -17,6 +18,7 @@ var is_moving = false
 @onready var sleepiness_bar = %SleepinessBar
 @onready var awake_timer_label = %AwakeTimerLabel
 @onready var high_score_label = %HighScoreLabel
+@onready var sleep_status_label = %SleepStatusLabel
 
 func _ready():
 	setup_character_sprites()
@@ -25,51 +27,76 @@ func _ready():
 	update_ui()
 
 func setup_character_sprites():
-	# Get the current character's idle sprite
+	# Get the current character's sprites
 	var idle_sprite_path = CharacterManager.get_idle_sprite_path()
+	var sleep_sprite_path = CharacterManager.get_sleep_sprite_path()
 	var idle_texture = null
+	var sleep_texture = null
 	
 	if ResourceLoader.exists(idle_sprite_path):
 		idle_texture = load(idle_sprite_path)
 	else:
-		print("Warning: Could not find sprite at path: ", idle_sprite_path)
+		print("Warning: Could not find idle sprite at path: ", idle_sprite_path)
+		return
+	
+	if ResourceLoader.exists(sleep_sprite_path):
+		sleep_texture = load(sleep_sprite_path)
+	else:
+		print("Warning: Could not find sleep sprite at path: ", sleep_sprite_path)
 		return
 	
 	# Clear existing animations
 	var sprite_frames = SpriteFrames.new()
 	
 	# Create idle animation
-	var idle_frames = []
+	setup_animation(sprite_frames, "idle", idle_texture)
 	
-	# Check if the texture is a sprite sheet (has multiple frames)
-	if idle_texture:
-		var texture_width = idle_texture.get_width()
-		var texture_height = idle_texture.get_height()
-		var frame_width = 32  # Assuming 32x32 frames
-		var frame_height = 32
-		var frames_per_row = texture_width / frame_width
-		var total_frames = min(7, frames_per_row)  # Max 7 frames for idle animation
-		
-		for i in range(total_frames):
-			var atlas_texture = AtlasTexture.new()
-			atlas_texture.atlas = idle_texture
-			atlas_texture.region = Rect2(i * frame_width, 0, frame_width, frame_height)
-			idle_frames.append(atlas_texture)
-	
-	# Add idle animation to sprite frames
-	sprite_frames.add_animation("idle")
-	for frame in idle_frames:
-		sprite_frames.add_frame("idle", frame)
-	sprite_frames.set_animation_speed("idle", 10.0)
-	sprite_frames.set_animation_loop("idle", true)
+	# Create sleep animation
+	setup_animation(sprite_frames, "sleep", sleep_texture)
 	
 	# Apply the new sprite frames
 	animated_sprite.sprite_frames = sprite_frames
-	animated_sprite.play("idle")
+	if is_sleeping:
+		animated_sprite.play("sleep")
+	else:
+		animated_sprite.play("idle")
+
+func setup_animation(sprite_frames: SpriteFrames, animation_name: String, texture: Texture2D):
+	var frames = []
+	
+	if texture:
+		var texture_width = texture.get_width()
+		var texture_height = texture.get_height()
+		var frame_width = 32  # Assuming 32x32 frames
+		var frame_height = 32
+		var frames_per_row = texture_width / frame_width
+		var total_frames = min(7, frames_per_row)  # Max 7 frames for animation
+		
+		for i in range(total_frames):
+			var atlas_texture = AtlasTexture.new()
+			atlas_texture.atlas = texture
+			atlas_texture.region = Rect2(i * frame_width, 0, frame_width, frame_height)
+			frames.append(atlas_texture)
+	
+	# Add animation to sprite frames
+	sprite_frames.add_animation(animation_name)
+	for frame in frames:
+		sprite_frames.add_frame(animation_name, frame)
+	
+	var speed = 3.0 if animation_name == "sleep" else 10.0
+	sprite_frames.set_animation_speed(animation_name, speed)
+	sprite_frames.set_animation_loop(animation_name, true)
 
 func _physics_process(delta: float) -> void:
-	# Update awake time
-	awake_time += delta
+	# Update awake time only if not sleeping
+	if not is_sleeping:
+		awake_time += delta
+	
+	# Handle wake up input if sleeping
+	if is_sleeping:
+		if Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down").length() > 0 or Input.is_anything_pressed():
+			wake_up()
+		return
 	
 	# Handle character switching
 	if Input.is_action_just_pressed("switch_character_next"):
@@ -151,8 +178,18 @@ func go_to_sleep():
 		high_score = awake_time
 		save_high_score()
 	
-	# Change to sleeping cat scene
-	get_tree().change_scene_to_file("res://scenes/sleeping_cat.tscn")
+	# Enter sleeping state
+	is_sleeping = true
+	animated_sprite.play("sleep")
+	print("Cat is now sleeping! Move or press any key to wake up.")
+
+func wake_up():
+	# Reset sleeping state
+	is_sleeping = false
+	awake_time = 0.0
+	reset_sleepiness()
+	animated_sprite.play("idle")
+	print("Cat woke up! Starting new awake session.")
 
 func update_ui():
 	if sleepiness_bar:
@@ -161,6 +198,11 @@ func update_ui():
 		awake_timer_label.text = "Awake: " + format_time(awake_time)
 	if high_score_label:
 		high_score_label.text = "Best: " + format_time(high_score)
+	if sleep_status_label:
+		if is_sleeping:
+			sleep_status_label.text = "😴 SLEEPING\nMove to wake up!"
+		else:
+			sleep_status_label.text = ""
 
 func format_time(time: float) -> String:
 	var minutes = int(time) / 60

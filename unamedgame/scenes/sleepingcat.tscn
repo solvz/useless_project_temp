@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cudbfdjp1rxbx"]
+
+[ext_resource type="Texture2D" uid="uid://10v4fm870k6e" path="res://assets/sprites/Player/AnimalPack/Cats/BlackCat/PNG/SleepCatb.png" id="1_hba17"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgc1q"]
+atlas = ExtResource("1_hba17")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dnu4"]
+atlas = ExtResource("1_hba17")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7n2y"]
+atlas = ExtResource("1_hba17")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jx7ng"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgc1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dnu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7n2y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbd0e"]
+radius = 8.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jx7ng")
+autoplay = "default"
+frame_progress = 0.0444324
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 8)
+shape = SubResource("CircleShape2D_hbd0e")

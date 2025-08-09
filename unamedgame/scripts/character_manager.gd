@@ -17,21 +17,24 @@ var character_data = {
 		"idle_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BlackCat/PNG/IdleCatb.png",
 		"run_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BlackCat/PNG/RunCatb.png",
 		"jump_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BlackCat/PNG/JumpCabt.png",
-		"attack_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BlackCat/PNG/AttackCatb.png"
+		"attack_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BlackCat/PNG/AttackCatb.png",
+		"sleep_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BlackCat/PNG/SleepCatb.png"
 	},
 	CharacterType.BROWN_CAT: {
 		"name": "Brown Cat",
 		"idle_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BrownCat/IdleCattt.png",
 		"run_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BrownCat/RunCattt.png",
 		"jump_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BrownCat/JumpCatttt.png",
-		"attack_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BrownCat/AttackCattt.png"
+		"attack_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BrownCat/AttackCattt.png",
+		"sleep_sprite": "res://assets/sprites/Player/AnimalPack/Cats/BrownCat/SleepCattt.png"
 	},
 	CharacterType.SIAMESE_CAT: {
 		"name": "Siamese Cat",
 		"idle_sprite": "res://assets/sprites/Player/AnimalPack/Cats/Siamese/PNG/IdleCattt.png",
 		"run_sprite": "res://assets/sprites/Player/AnimalPack/Cats/Siamese/PNG/RunCattt.png",
 		"jump_sprite": "res://assets/sprites/Player/AnimalPack/Cats/Siamese/PNG/JumpCatttt.png",
-		"attack_sprite": "res://assets/sprites/Player/AnimalPack/Cats/Siamese/PNG/AttackCattt.png"
+		"attack_sprite": "res://assets/sprites/Player/AnimalPack/Cats/Siamese/PNG/AttackCattt.png",
+		"sleep_sprite": "res://assets/sprites/Player/AnimalPack/Cats/Siamese/PNG/SleepCattt.png"
 	}
 }
 
@@ -49,6 +52,9 @@ func get_jump_sprite_path(character_type: CharacterType = selected_character) ->
 
 func get_attack_sprite_path(character_type: CharacterType = selected_character) -> String:
 	return character_data[character_type]["attack_sprite"]
+
+func get_sleep_sprite_path(character_type: CharacterType = selected_character) -> String:
+	return character_data[character_type]["sleep_sprite"]
 
 func set_selected_character(character_type: CharacterType):
 	selected_character = character_type
